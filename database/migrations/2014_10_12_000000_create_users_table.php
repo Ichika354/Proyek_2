@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id('id_user');
             $table->string('name');
             $table->integer('npm');
-            $table->string('no_telp');
+            $table->string('numberPhone');
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_users');
+        Schema::dropIfExists('users');
     }
 };

@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Login;
-use App\Http\Controllers\Regis;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\registrationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,14 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('Layouts.Admin.mainAdmin');
-});
+// Route::group(['middleware' => 'auth'], function(){
+// });
+Route::get('/dashboard', [dashboardController::class, 'views'])->name('Dashboard');
 
-Route::get('/login', [Login::class, 'login'])->name('login');
-Route::get('/back', [Login::class, 'back'])->name('back');
-Route::get('/regis', [Regis::class, 'regis'])->name('regis');
-Route::post('/regis',[Regis::class,'store']);
+
+Route::get('/login', [loginController::class, 'views'])->name('Login');
+Route::get('/registration', [registrationController::class, 'views'])->name('Registration');
+Route::get('/back', [registrationController::class, 'back'])->name('BackHome');
+Route::post('/login', [loginController::class, 'login'])->name('Login.Post');
+Route::post('/registration', [registrationController::class, 'registration'])->name('Registration.Post');
+Route::get('/logout', [loginController::class, 'views'])->name('Logout');

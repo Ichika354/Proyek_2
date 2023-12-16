@@ -1,5 +1,5 @@
-@extends('partials.layoutLanding')
-@section('title', 'WAU (Wirausaha Anak Ulbi)')
+@extends('layouts.layout')
+@section('title', 'Home Page')
 @section('content')
     <!-- Masthead-->
     <header class="masthead bg-primary text-white text-center">
@@ -35,7 +35,7 @@
 
                 <div class="col-md-6 col-lg-3 mb-5 ">
                     <div class="book">
-                        <a href="Detail/">
+                        <a href="">
                             <img src="Images/Produk/kentang.jpeg" alt="Kentang" class="foto">
                         </a>
                         <div class="cover">
@@ -77,7 +77,7 @@
         <div class="container">
             <!-- Contact Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Daftar Sekarang <a
-                    href="{{ route('Registration') }}">di sini</a></h2>
+                    href="">di sini</a></h2>
             <!-- Icon Divider-->
             <div class="divider-custom">
                 <div class="divider-custom-line"></div>
@@ -87,7 +87,7 @@
             <!-- Contact Section Form-->
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-xl-7">
-                   
+
                 </div>
             </div>
         </div>

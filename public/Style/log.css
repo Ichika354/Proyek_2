@@ -1,9 +1,9 @@
-.bg-color{
+.bg-color {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90vh;
+    height: 70vh;
 }
 
 .form {
@@ -80,7 +80,7 @@
     transition: 0.5s;
 }
 
-.gap{
+.gap {
     display: flex;
     justify-content: space-around;
     width: 100%;
@@ -90,7 +90,7 @@
     background-color: rgb(0, 0, 0);
 }
 
-.b a{
+.b a {
     text-decoration: none;
     color: white;
     padding: auto;

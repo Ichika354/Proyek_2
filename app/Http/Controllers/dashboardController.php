@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class dashboardController extends Controller
+class DashboardController extends Controller
 {
-    public function views(){
-        return view('admin.dashboard');
+    public function viewsProfile(){
+        return view('seller.profileAdmin');
     }
 }

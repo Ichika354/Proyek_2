@@ -1,7 +1,8 @@
-@extends('log.layoutLog')
-@section('title', 'Registration')
+@extends('layouts.app')
+
 @section('content')
-    <form class="form" action="{{ route('Registration.Post') }}" method="POST">
+<div class="bg-color">
+    <form class="form" action="{{ route('register') }}" method="POST">
         @csrf
         <span class="signup">Sign Up</span>
         @error('password')
@@ -18,7 +19,7 @@
         <input type="password" placeholder="Confirm password" class="form--input" name="password_confirmation">
         <div class="gap">
             <button class="form--submit b">
-                <a href="{{ route('BackHome') }}">
+                <a href="{{ url('/') }}">
                     Back
                 </a>
             </button>
@@ -27,4 +28,5 @@
             </button>
         </div>
     </form>
+</div>
 @endsection

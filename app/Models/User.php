@@ -12,8 +12,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'users';
-
     /**
      * The attributes that are mass assignable.
      *
@@ -24,7 +22,24 @@ class User extends Authenticatable
         'npm',
         'numberPhone',
         'password',
+        'role',
     ];
+
+    public function getAuthIdentifierName()
+    {
+        return 'npm';
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class, 'id_user');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'id_user');
+    }
+
 
     /**
      * The attributes that should be hidden for serialization.

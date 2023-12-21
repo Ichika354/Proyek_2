@@ -30,6 +30,7 @@ class CategoryController extends Controller
         $categoryData = [
             'id_user' => Auth::user()->id, // Mendapatkan ID pengguna yang login
             'category' => $request->category,
+           
         ];
 
         Category::create($categoryData);
@@ -64,5 +65,20 @@ class CategoryController extends Controller
         ]);
 
         return redirect()->route('Category.Seller')->with('success', 'Kategori berhasil diupdate.');
+    }
+
+    // ProductController.php
+
+    public function productsByCategory($categoryName)
+    {
+        $category = Category::where('name', $categoryName)->first();
+
+        if (!$category) {
+            abort(404); // Atau sesuaikan dengan cara penanganan kesalahan yang sesuai
+        }
+
+        $products = $category->products;
+
+        return view('products.by_category', compact('products', 'category'));
     }
 }

@@ -18,7 +18,8 @@
                     <div class="d-block rounded shadow bg-white p-3 mt-3">
                         <div class="cust-table">
                             <div class="d-flex justify-content-between ps-5 pt-1 flex-wrap gap-5 title-table w-100">
-                                <form action="{{ route('Products.Update', $product->id_produk) }}" method="POST">
+                                <form action="{{ route('Products.Update', $product->id_produk) }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <table>
@@ -54,10 +55,14 @@
                                                     value="{{ $product->price }}"></td>
                                         </tr>
                                         <tr>
-                                            <td class="pe-4 pb-4"><label for="foto">Foto</label></td>
+                                            <td class="pe-4 pb-4"><label for="photo">Foto</label></td>
                                             <td class="pe-3 pb-4">:</td>
-                                            <td class="pb-4"><input type="text" name="photo" id="foto"
-                                                    class="form-control" value="{{ $product->photo }}"></td>
+                                            <td class="pb-4 d-flex gap-3">
+                                                <input type="file" name="photo" id="photo" class="form-control"
+                                                    accept="image/*">
+                                                <img src="{{ asset('img/produk/' . $product->photo) }}" width="50"
+                                                    alt="" height="30" class="mt-2">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="pe-4 pb-4"><label for="stok">Ketersediaan Stok</label></td>

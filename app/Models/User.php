@@ -17,12 +17,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'name',
         'npm',
         'numberPhone',
         'password',
         'role',
+        'address',
     ];
 
     public function getAuthIdentifierName()
@@ -38,6 +42,11 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class, 'id_user');
+    }
+
+    public function address()
+    {
+        return $this->hasMany(Address::class, 'id_user');
     }
 
 

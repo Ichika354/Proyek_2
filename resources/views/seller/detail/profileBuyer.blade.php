@@ -27,7 +27,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="pe-5">
+                                                    <td>
                                                         <p>NPM</p>
                                                     </td>
                                                     <td class="pe-3">
@@ -59,7 +59,36 @@
                                                         <p>{{ Auth::user()->role }}</p>
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td>
+                                                        <p>Alamat</p>
+                                                    </td>
+                                                    <td>
+                                                        :
+                                                    </td>
+                                                    <td>
+                                                    </td>
+                                                </tr>
                                             </table>
+                                            @if ($addresses->count() > 1)
+                                                <table>
+                                                    @foreach ($addresses as $address)
+                                                        <tr>
+                                                            <td class="pe-3">{{ $loop->iteration }}</td>
+                                                            <td class="pe-3">{{ $address->address }}</td>
+                                                            <td class="pe-3">
+                                                                <a href="" class="text-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                            </td>
+                                                            <td><a href="" class="text-danger"><i class="fa-solid fa-trash"></i></a></td>
+                                                        </tr>
+                                                    @endforeach
+                                                </table>
+                                            @else
+                                                <p>Belum Memiliki Alamat</p>
+                                            @endif
+                                            <div class="ms-auto mt-3">
+                                                <a href="{{ route('Address') }}" class="btn btn-primary">Tambah Alamat</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -71,3 +100,4 @@
         </main>
     </div>
 @endsection
+

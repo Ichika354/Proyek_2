@@ -18,7 +18,7 @@
                     <div class="d-block rounded shadow bg-white p-3 mt-3">
                         <div class="cust-table">
                             <div class="d-flex justify-content-between ps-5 pt-1 flex-wrap gap-5 title-table w-100">
-                                <form action="{{ route('Product.Store') }}" method="POST">
+                                <form action="{{ route('Product.Store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <table>
                                         <tr>
@@ -35,7 +35,8 @@
                                                     name="id_category" id="kategori">
                                                     <option selected>Open this select menu</option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id_category }}">{{ $category->category }}</option>
+                                                        <option value="{{ $category->id_category }}">
+                                                            {{ $category->category }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -49,8 +50,10 @@
                                         <tr>
                                             <td class="pe-4 pb-4"><label for="foto">Foto</label></td>
                                             <td class="pe-3 pb-4">:</td>
-                                            <td class="pb-4"><input type="text" name="photo" id="foto"
-                                                    class="form-control"></td>
+                                            <td class="pb-4">
+                                                <input type="file" name="photo" id="foto" class="form-control"
+                                                    accept="image/*">
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td class="pe-4 pb-4"><label for="stok">Ketersediaan Stok</label></td>

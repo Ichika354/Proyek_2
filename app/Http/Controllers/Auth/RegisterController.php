@@ -54,6 +54,7 @@ class RegisterController extends Controller
             'npm' => ['required', 'string', 'max:255', 'regex:/^71[4-8]22[0-1]\d{3}$/'],
             'numberPhone' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string'],
         ]);
     }
 
@@ -70,7 +71,7 @@ class RegisterController extends Controller
             'npm' => $data['npm'],
             'numberPhone' => $data['numberPhone'],
             'password' => Hash::make($data['password']),
-            'role' => 'Seller',
+            'role' => $data['role'],
         ]);
     }
 

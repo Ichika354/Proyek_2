@@ -8,15 +8,16 @@
                     <div class="d-block rounded shadow bg-white p-3 mt-3">
                         <div class="cust-table">
                             <div class="d-flex justify-content-between flex-wrap gap-5 title-table w-100">
-                                <h1>ADD ADDRESS</h1>
+                                <h1>EDIT ADDRESS</h1>
                             </div>
                         </div>
                     </div>
                     <div class="d-block rounded shadow bg-white p-3 mt-3">
                         <div class="cust-table">
                             <div class="d-flex justify-content-between ps-5 pt-1 flex-wrap gap-5 title-table w-100">
-                                <form action="{{ route('Add.Address') }}" method="POST">
+                                <form action="{{ route('Edit.Address.Put', $address->id_address) }}" method="POST">
                                     @csrf
+                                    @method('PUT')
                                     <table>
                                         <tr>
                                             <td class="pe-4 pb-2"><label for="provinsi">Provinsi</label></td>
@@ -25,7 +26,10 @@
                                                 <select name="province_id" id="provinsi" class="form-select">
                                                     <option selected disabled>Pilih Provinsi</option>
                                                     @foreach ($provinces as $province)
-                                                        <option value="{{ $province->id }}">{{ $province->name }}</option>
+                                                        <option value="{{ $province->id }}"
+                                                            @if ($province->id == $address->province_id) selected @endif>
+                                                            {{ $province->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </td>
@@ -63,13 +67,13 @@
                                             <td class="pe-4 pb-2"><label for="patokan">Patokan</label></td>
                                             <td class="pe-3 pb-2">:</td>
                                             <td class="pb-2">
-                                                <input type="text" class="form-control" name="patokan" required>
+                                                <input type="text" class="form-control" name="patokan" value="{{ $address->patokan }}" required>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td><button type="submit" name="submit" class="btn btn-primary">Tambah
+                                            <td><button type="submit" name="submit" class="btn btn-primary">Edit
                                                 </button></td>
                                         </tr>
                                     </table>

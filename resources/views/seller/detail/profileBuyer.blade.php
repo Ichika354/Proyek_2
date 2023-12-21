@@ -70,22 +70,29 @@
                                                     </td>
                                                 </tr>
                                             </table>
-                                            @if ($addresses->count() > 1)
-                                                <table>
-                                                    @foreach ($addresses as $address)
+                                            <table>
+                                                @foreach ($addresses as $address)
+                                                    @if ($address->count() > 1)
                                                         <tr>
                                                             <td class="pe-3">{{ $loop->iteration }}</td>
-                                                            <td class="pe-3">{{ $address->address }}</td>
                                                             <td class="pe-3">
-                                                                <a href="" class="text-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                                {{ $address->provinsi->name }},{{ $address->kabupaten->name }},
+                                                                {{ $address->kecamatan->name }},{{ $address->desa->name }},
+                                                                {{ $address->patokan }}
                                                             </td>
-                                                            <td><a href="" class="text-danger"><i class="fa-solid fa-trash"></i></a></td>
+                                                            <td class="pe-3">
+                                                                <a href="{{ route('Edit.Address', $address->id_address) }}"
+                                                                    class="text-warning"><i
+                                                                        class="fa-solid fa-pen-to-square"></i></a>
+                                                            </td>
+                                                            <td><a href="" class="text-danger"><i
+                                                                        class="fa-solid fa-trash"></i></a></td>
                                                         </tr>
-                                                    @endforeach
-                                                </table>
-                                            @else
-                                                <p>Belum Memiliki Alamat</p>
-                                            @endif
+                                                    @else
+                                                        <p>Belum Memiliki Alamat</p>
+                                                    @endif
+                                                @endforeach
+                                            </table>
                                             <div class="ms-auto mt-3">
                                                 <a href="{{ route('Address') }}" class="btn btn-primary">Tambah Alamat</a>
                                             </div>
@@ -100,4 +107,3 @@
         </main>
     </div>
 @endsection
-

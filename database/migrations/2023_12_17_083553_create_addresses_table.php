@@ -14,10 +14,18 @@ return new class extends Migration
         Schema::create('addresses', function (Blueprint $table) {
             $table->id('id_address');
             $table->unsignedBigInteger('id_user');
-            $table->text('address');
+            $table->char('province_id');
+            $table->char('regency_id');
+            $table->char('district_id');
+            $table->char('village_id');
+            $table->text('patokan');
             $table->timestamps();
 
             $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('province_id')->references('id')->on('provinces');
+            $table->foreign('regency_id')->references('id')->on('regencies');
+            $table->foreign('district_id')->references('id')->on('districts');
+            $table->foreign('village_id')->references('id')->on('villages');
         });
     }
 

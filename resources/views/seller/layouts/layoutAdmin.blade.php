@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>
         @yield('title')
     </title>
@@ -69,6 +70,79 @@
 
 
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name = "csrf-token"]').attr('content')
+                }
+            });
+        })
+
+        $(function() {
+            $('#provinsi').on('change', function() {
+                let idProvinsi = $('#provinsi').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('getkabupaten') }}",
+                    data: {
+                        idProvinsi: idProvinsi
+                    },
+                    cache: false,
+
+                    success: function(msg) {
+                        $('#kabupaten').html(msg);
+                        // $('#kecamatan').html('');
+                        // $('#desa').html('');
+                    },
+                    error: function(data) {
+                        console.log('error :', data)
+                    }
+                })
+            })
+
+            $('#kabupaten').on('change', function() {
+                let idKabupaten = $('#kabupaten').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('getkecamatan') }}",
+                    data: {
+                        idKabupaten: idKabupaten
+                    },
+                    cache: false,
+
+                    success: function(msg) {
+                        $('#kecamatan').html(msg);
+                    },
+                    error: function(data) {
+                        console.log('error :', data)
+                    }
+                })
+            })
+
+            $('#kecamatan').on('change', function() {
+                let idKecamatan = $('#kecamatan').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('getdesa') }}",
+                    data: {
+                        idKecamatan: idKecamatan
+                    },
+                    cache: false,
+
+                    success: function(msg) {
+                        $('#desa').html(msg);
+                    },
+                    error: function(data) {
+                        console.log('error :', data)
+                    }
+                })
+            })
+        })
+    </script>
 
 </body>
 

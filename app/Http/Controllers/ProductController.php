@@ -104,7 +104,7 @@ class ProductController extends Controller
 
         Product::create($productData);
 
-        return redirect()->route('Product.Seller')->with('success', 'Product added successfully.');
+           return redirect()->route('Product.Seller')->with('success', 'Product added successfully.');
     }
 
     public function update(Request $request, $id)

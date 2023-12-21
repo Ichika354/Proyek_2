@@ -46,7 +46,9 @@ Route::post('/storeProduct',[ProductController::class,'store'])->name('Product.S
 
 Route::get('/categoryProduct{$categoryName}',[CategoryController::class,'productsByCategory'])->name('Product.By.Category');
 
-
+Route::post('/getkabupaten',[AddressController::class,'getkabupaten'])->name('getkabupaten');
+Route::post('/getkecamatan',[AddressController::class,'getkecamatan'])->name('getkecamatan');
+Route::post('/getdesa',[AddressController::class,'getdesa'])->name('getdesa');
 
 
 
@@ -62,5 +64,8 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('/Adress', [AddressController::class, 'Adress'])->name('Address');
     Route::post('/addAdress', [AddressController::class, 'addAdress'])->name('Add.Address');
+
+    Route::get('/editAdressView/{id}', [AddressController::class, 'editAdressView'])->name('Edit.Address');
+    Route::put('/editAdress/{id}', [AddressController::class, 'editAdress'])->name('Edit.Address.Put');
     // Route::patch('/userEditPut/{id}', [LoginController::class, 'userEditPut'])->name('User.Edit.Put');
 });

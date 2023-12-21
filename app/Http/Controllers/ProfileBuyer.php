@@ -11,10 +11,8 @@ class ProfileBuyer extends Controller
     public function viewsProfile()
     {
         $user = Auth::user();
-
         $addresses = $user->address;
-
         return view('seller.detail.profileBuyer', compact('addresses'));
 
-    }
+    } 
 }

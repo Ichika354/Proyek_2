@@ -73,7 +73,7 @@ class AddressController extends Controller
 
         Address::create($addAdress);
 
-        return redirect()->route('Profile.Buyer')->with('success', 'Product added successfully.');
+        return redirect()->route('Profile.Buyer')->with('success', 'Address added successfully.');
     }
 
     public function editAdressView($id)
@@ -103,6 +103,20 @@ class AddressController extends Controller
             'patokan' => $request->patokan
         ]);
 
-        return redirect()->route('Profile.Buyer')->with('success', 'Product added successfully.');
+        return redirect()->route('Profile.Buyer')->with('success', 'Address updated successfully.');
+    }
+
+    public function deleteAdress($id)
+    {
+        $address = Address::findOrFail($id);
+
+        // Pastikan pengguna yang sedang login memiliki akses
+        // atau produk dimiliki oleh pengguna yang sedang login
+        if ($address->id_user == auth()->user()->id) {
+            $address->delete();
+            return redirect()->route('Profile.Buyer')->with('success', 'Address deleted successfully.');
+        } else {
+            return redirect()->route('Profile.Buyer')->with('error', 'You do not have permission to delete this product.');
+        }
     }
 }

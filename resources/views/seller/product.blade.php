@@ -45,7 +45,7 @@
                                                 <td scope="row">{{ $loop->iteration }}</td>
                                                 <td>
                                                     <img src="{{ asset('img/produk/' . $product->photo) }}"
-                                                        alt="Product Image" width="50">
+                                                        alt="Product Image" width="50" height="40">
                                                 </td>
                                                 <td>{{ $product->produkName }}</td>
                                                 <td>{{ $product->category->category }}</td>

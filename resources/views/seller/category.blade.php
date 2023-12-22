@@ -23,103 +23,28 @@
                                     </table>
                                 </form>
                             </div>
-                            @if (Auth::user()->role == 'Seller')
-                                <div class="table mt-5">
-                                    <table class="table ms-0">
+                            <div class="table mt-5">
+                                <table class="table ms-0">
+                                    <tr>
+                                        <th scope="col">No.</th>
+                                        <th scope="col">Kategori</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                    @foreach ($categories as $category)
                                         <tr>
-                                            <th scope="col">No.</th>
-                                            <th scope="col">Kategori</th>
-                                            <th scope="col">Aksi</th>
+                                            <td scope="row">{{ $loop->iteration }}</td>
+                                            <td>{{ $category->category }}</td>
+                                            <td>
+                                                <a class="btn btn-secondary"
+                                                    href="{{ route('Category.Detail', $category->id_category) }}">
+                                                    <i class="fas fa-search"></i>
+                                                </a>
+                                            </td>
                                         </tr>
-                                        @foreach ($categories as $category)
-                                            <tr>
-                                                <td scope="row">{{ $loop->iteration }}</td>
-                                                <td>{{ $category->category }}</td>
-                                                <td>
-                                                    <a class="btn btn-secondary"
-                                                        href="{{ route('Category.Detail', $category->id_category) }}">
-                                                        <i class="fas fa-search"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </table>
-                                    <a href="{{ route('Category.Add') }}" class="btn btn-primary">INPUT</a>
-                                </div>
-                            @else
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur corrupti,
-                                    suscipit similique accusantium fugit ut dicta harum dolores, aliquam corporis eligendi
-                                    laborum reiciendis quasi ratione perferendis consequatur unde adipisci.</p>
-
-                                <div class="row g-5 mb-3 d-flex">
-                                    <div class="col-4">
-                                        <div class="card_card">
-                                            <i class="fa-solid fa-bowl-food bowl"></i>
-                                            <div class="card__content">
-                                                <p class="card__title">Makanan</p>
-                                                <p class="card__description">Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing
-                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="card_card">
-                                            <i class="fa-solid fa-champagne-glasses bowl"></i>
-                                            <div class="card__content">
-                                                <p class="card__title">Minuman</p>
-                                                <p class="card__description">Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing
-                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="card_card">
-                                            <i class="fa-solid fa-mobile bowl"></i>
-                                            <div class="card__content">
-                                                <p class="card__title">Elektronik</p>
-                                                <p class="card__description">Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing
-                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="card_card">
-                                            <i class="fa-solid fa-shirt bowl"></i>
-                                            <div class="card__content">
-                                                <p class="card__title">Pakaian</p>
-                                                <p class="card__description">Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing
-                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="card_card">
-                                            <i class="fa-solid fa-book bowl"></i>
-                                            <div class="card__content">
-                                                <p class="card__title">Buku</p>
-                                                <p class="card__description">Lorem ipsum dolor sit amet, consectetur
-                                                    adipiscing
-                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                    Ut enim
-                                                    ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @endif
+                                    @endforeach
+                                </table>
+                                <a href="{{ route('Category.Add') }}" class="btn btn-primary">INPUT</a>
+                            </div>
                         </div>
                     </div>
                 </div>

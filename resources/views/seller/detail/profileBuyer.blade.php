@@ -85,8 +85,17 @@
                                                                     class="text-warning"><i
                                                                         class="fa-solid fa-pen-to-square"></i></a>
                                                             </td>
-                                                            <td><a href="" class="text-danger"><i
-                                                                        class="fa-solid fa-trash"></i></a></td>
+                                                            <td>
+                                                                <form action="{{ route('Delete.Address', $address->id_address) }}"
+                                                                    method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <!-- Tombol Delete -->
+                                                                    <button type="submit" class="btn text-danger"
+                                                                        onclick="return confirm('Yakin mau hapus?')"><i
+                                                                        class="fa-solid fa-trash"></i></button>
+                                                                </form>
+                                                            </td>
                                                         </tr>
                                                     @else
                                                         <p>Belum Memiliki Alamat</p>

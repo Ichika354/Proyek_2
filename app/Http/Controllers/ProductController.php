@@ -123,19 +123,20 @@ class ProductController extends Controller
 
         // Handle file upload
         if ($request->hasFile('photo')) {
-            // Hapus gambar lama
+            // Menghapus photo lama
             if ($product->photo) {
                 Storage::delete('img/produk/' . $product->photo);
             }
 
-            // Upload gambar baru
+            // Mengupload photo baru
             $image = $request->file('photo');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('img/produk'), $imageName);
 
-
-            // Update nama gambar di model
-            $product->photo = $imageName;
+            // Mengupdate data pro$product dengan photo baru
+            $product->update([
+                'photo' => $imageName,
+            ]);
         }
 
         // Update data produk
@@ -147,7 +148,7 @@ class ProductController extends Controller
             'detail' => $request->detail,
         ]);
 
-        return redirect()->route('Product.Seller')->with('success', 'Produk berhasil diperbarui.');
+        return redirect()->route('Product.Seller')->with('success', 'Product has been updated');
     }
 
 

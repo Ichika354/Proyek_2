@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
         Category::create($categoryData);
 
-        return redirect()->route('Category.Seller')->with('success', 'Product added successfully.');
+        return redirect()->route('Category.Seller')->with('success', 'Category added successfully.');
     }
 
     public function updateViews($id)
@@ -64,7 +64,7 @@ class CategoryController extends Controller
             // Update kolom lainnya sesuai kebutuhan
         ]);
 
-        return redirect()->route('Category.Seller')->with('success', 'Kategori berhasil diupdate.');
+        return redirect()->route('Category.Seller')->with('success', 'Category has been updated');
     }
 
     // ProductController.php

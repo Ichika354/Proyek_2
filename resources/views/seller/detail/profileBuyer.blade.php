@@ -71,8 +71,8 @@
                                                 </tr>
                                             </table>
                                             <table>
-                                                @foreach ($addresses as $address)
-                                                    @if ($address->count() > 1)
+                                                @if ($addresses->count() >= 1)
+                                                    @foreach ($addresses as $address)
                                                         <tr>
                                                             <td class="pe-3">{{ $loop->iteration }}</td>
                                                             <td class="pe-3">
@@ -86,21 +86,22 @@
                                                                         class="fa-solid fa-pen-to-square"></i></a>
                                                             </td>
                                                             <td>
-                                                                <form action="{{ route('Delete.Address', $address->id_address) }}"
+                                                                <form
+                                                                    action="{{ route('Delete.Address', $address->id_address) }}"
                                                                     method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <!-- Tombol Delete -->
                                                                     <button type="submit" class="btn text-danger"
                                                                         onclick="return confirm('Yakin mau hapus?')"><i
-                                                                        class="fa-solid fa-trash"></i></button>
+                                                                            class="fa-solid fa-trash"></i></button>
                                                                 </form>
                                                             </td>
                                                         </tr>
-                                                    @else
-                                                        <p>Belum Memiliki Alamat</p>
-                                                    @endif
-                                                @endforeach
+                                                    @endforeach
+                                                @else
+                                                    <p>Belum Memiliki Alamat</p>
+                                                @endif
                                             </table>
                                             <div class="ms-auto mt-3">
                                                 <a href="{{ route('Address') }}" class="btn btn-primary">Tambah Alamat</a>

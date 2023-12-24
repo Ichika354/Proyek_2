@@ -40,4 +40,9 @@ class Address extends Model
     public function desa() {
         return $this->belongsTo(Village::class,'village_id');
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class, 'id_user');
+    }
 }

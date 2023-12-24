@@ -104,6 +104,7 @@
                         <br />
                         Jalan Sariasih No. 54 Sarijadi Bandung, 40151, Jawa Barat Indonesia
                     </p>
+                    
                 </div>
                 <!-- Footer Social Icons-->
                 <div class="col-lg-4 mb-5 mb-lg-0">
@@ -118,12 +119,10 @@
                 </div>
                 <!-- Footer About Text-->
                 <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">Tentang Web</h4>
-                    <p class="lead mb-0">
-                        Web ini dibuat dengan tujuan memenuhi proyek 2
-                        <!-- <a href="http://startbootstrap.com">Start Bootstrap</a> -->
-                        .
-                    </p>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3915.642562787089!2d107.57490179845192!3d-6.873802873306324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7d1b68bb875%3A0xd8fcf5a9e43bd6e4!2sUniversitas%20Logistik%20dan%20Bisnis%20Internasional%20(ULBI)!5e0!3m2!1sid!2sid!4v1703308150206!5m2!1sid!2sid"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>

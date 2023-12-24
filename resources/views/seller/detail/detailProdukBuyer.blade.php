@@ -29,7 +29,8 @@
                                                     </td>
                                                     <td>
                                                         <p class="card-text">
-                                                            {{ number_format($products->price, 0, ',', '.') }}</p>
+                                                           Rp. {{ number_format($products->price*(10/100)+$products->price, 0, ',', '.') }}
+                                                        </p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -56,7 +57,7 @@
                                                 </tr>
                                             </table>
                                             <p class="card-text p-2">{{ $products->detail }}</p>
-                                            <button class="btn btn-primary">Beli</button>
+                                            <a href="{{ route('Order.Views',$products->id_produk) }}" class="btn btn-primary">Beli</a>
                                         </div>
                                     </div>
                                 </div>

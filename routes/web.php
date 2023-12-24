@@ -40,7 +40,9 @@ Route::get('/categoryBuyer',[CategoryBuyerController::class,'views'])->name('Cat
 Route::get('/addCategory',[CategoryController::class,'viewsAdd'])->name('Category.Add');
 Route::post('/storeCategory',[CategoryController::class,'store'])->name('Category.Store');
 
-Route::get('/order',[OrderController::class,'views'])->name('Order.Views');
+Route::get('/order/{id}',[OrderController::class,'views'])->name('Order.Views');
+Route::post('/checkout',[OrderController::class,'checkout'])->name('Checkout');
+Route::post('/midtrans-callback', [OrderController::class, 'callback'])->name('Callback');
 
 
 

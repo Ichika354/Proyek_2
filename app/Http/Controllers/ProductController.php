@@ -57,7 +57,7 @@ class ProductController extends Controller
         $user = Auth::user();
 
         // Ambil kategori berdasarkan pengguna yang login
-        $categories = $user->categories;
+        $categories = $user->categories()->with('categoryAdmin')->get();
 
         return view('seller.create.createProduct', compact('categories'));
     }

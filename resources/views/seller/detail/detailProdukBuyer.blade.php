@@ -52,7 +52,7 @@
                                                         :
                                                     </td>
                                                     <td>
-                                                        <p class="card-text">{{ $products->category->category }}</p>
+                                                        <p class="card-text">{{ $products->category->categoryAdmin->category }}</p>
                                                     </td>
                                                 </tr>
                                             </table>

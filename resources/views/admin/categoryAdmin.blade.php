@@ -23,26 +23,30 @@
                                     </table>
                                 </form>
                             </div>
-
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur corrupti,
-                                suscipit similique accusantium fugit ut dicta harum dolores, aliquam corporis eligendi
-                                laborum reiciendis quasi ratione perferendis consequatur unde adipisci.</p>
-
-                            <div class="row g-5 mb-3 d-flex">
-                                @foreach ($categories as $category)
-                                    <div class="col-4">
-                                        <div class="card_card">
-                                            <i class="{{ $category->icon }} bowl"></i>
-                                            <div class="card__content">
-                                                <p class="card__title">{{ $category->category }}</p>
-                                                <a href=""
-                                                    class="btn btn-primary mt-3">Detail Produk</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                            <div class="table mt-5">
+                                <table class="table ms-0">
+                                    <tr>
+                                        <th scope="col">No.</th>
+                                        <th scope="col">Kategori</th>
+                                        <th scope="col">Icon</th>
+                                        <th scope="col">Aksi</th>
+                                    </tr>
+                                    @foreach ($categories as $category)
+                                        <tr>
+                                            <td scope="row">{{ $loop->iteration }}</td>
+                                            <td>{{ $category->category }}</td>
+                                            <td>{{ $category->icon }}</td>
+                                            <td>
+                                                <a class="btn btn-warning"
+                                                    href="{{ route('Category.Update.Admin',$category->id_category_admin) }}">
+                                                    <i class="fas fa-pen-square "></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+                                <a href="{{ route('Category.Store.Admin') }}" class="btn btn-primary">INPUT</a>
                             </div>
-
                         </div>
                     </div>
                 </div>

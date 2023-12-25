@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\CategoryAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,14 +12,15 @@ class CategoryController extends Controller
     public function views()
     {
         $seller = Auth::user();
-        $categories = $seller->categories;
+        $categories = $seller->categories()->with('categoryAdmin')->get();
 
         return view('seller.category', compact('categories'));
     }
 
     public function viewsAdd()
     {
-        return view('seller.create.createCategory');
+        $categories = CategoryAdmin::all();
+        return view('seller.create.createCategory', compact('categories'));
     }
 
     public function store(Request $request)
@@ -29,8 +31,8 @@ class CategoryController extends Controller
 
         $categoryData = [
             'id_user' => Auth::user()->id, // Mendapatkan ID pengguna yang login
-            'category' => $request->category,
-           
+            'id_category_admin' => $request->category,
+
         ];
 
         Category::create($categoryData);
@@ -41,8 +43,9 @@ class CategoryController extends Controller
     public function updateViews($id)
     {
         $category = Category::findOrFail($id);
+        $categories = CategoryAdmin::all();
 
-        return view('seller.update.categoryUpdate', compact('category'));
+        return view('seller.update.categoryUpdate', compact('category','categories'));
     }
 
     public function categoryDetail($id)
@@ -55,13 +58,11 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category' => 'required|string|max:255',
-            // Tambahkan validasi untuk kolom lainnya jika diperlukan
         ]);
 
         $category = Category::findOrFail($id);
         $category->update([
-            'category' => $request->input('category'),
-            // Update kolom lainnya sesuai kebutuhan
+            'id_category_admin' => $request->input('category'),
         ]);
 
         return redirect()->route('Category.Seller')->with('success', 'Category has been updated');

@@ -26,7 +26,7 @@
                                             <td class="pe-3">:</td>
                                             <td><input type="text" placeholder="isi kategori..." name="nama"
                                                     id="nama" require class="form-control" disabled
-                                                    value="{{ $category->category }}"></td>
+                                                    value="{{ $category->categoryAdmin->category }}"></td>
                                         </tr>
                                         <tr>
                                             <td></td>

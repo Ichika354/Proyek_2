@@ -12,11 +12,21 @@ class Category extends Model
 
     protected $fillable = [
         'id_user',
-        'category' 
+        'id_category_admin',
     ];
 
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function categoryAdmin()
+    {
+        return $this->belongsTo(CategoryAdmin::class, 'id_category_admin');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

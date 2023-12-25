@@ -36,7 +36,7 @@
                                                     <option selected>Open this select menu</option>
                                                     @foreach ($categories as $category)
                                                         <option value="{{ $category->id_category }}">
-                                                            {{ $category->category }}</option>
+                                                            {{ $category->categoryAdmin->category }}</option>
                                                     @endforeach
                                                 </select>
                                             </td>

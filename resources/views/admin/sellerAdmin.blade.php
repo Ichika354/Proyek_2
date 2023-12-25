@@ -1,5 +1,5 @@
 @extends('seller.layouts.layoutAdmin')
-@section('title', 'Kategori')
+@section('title', 'Seller Admin')
 @section('content')
     <div class="main-pages">
         <div class="container-fluid">
@@ -8,7 +8,7 @@
                     <div class="d-block rounded shadow bg-white p-3">
                         <div class="cust-table">
                             <div class="d-flex justify-content-between flex-wrap gap-5 title-table w-100">
-                                <h1>DATA KATEGORI</h1>
+                                <h1>DATA PENJUAL</h1>
                                 <form class="d-flex " role="search" method="post">
                                     <table>
                                         <tr>
@@ -23,28 +23,37 @@
                                     </table>
                                 </form>
                             </div>
+
+                            <!-- Tampilan untuk Seller -->
                             <div class="table mt-5">
+                                <!-- Tabel Produk untuk Seller -->
                                 <table class="table ms-0">
+                                    <!-- Header Tabel -->
                                     <tr>
                                         <th scope="col">No.</th>
-                                        <th scope="col">Kategori</th>
-                                        <th scope="col">Aksi</th>
+                                        <th scope="col">Nama Penjual</th>
+                                        <th scope="col">NPM</th>
+                                        <th scope="col">No Telpon</th>
+                                        {{-- <th scope="col">Produk</th> --}}
                                     </tr>
-                                    @foreach ($categories as $category)
-                                        <tr>
-                                            <td scope="row">{{ $loop->iteration }}</td>
-                                            <td>{{ $category->categoryAdmin->category }}</td>
-                                            <td>
-                                                <a class="btn btn-secondary"
-                                                    href="{{ route('Category.Detail', $category->id_category) }}">
-                                                    <i class="fas fa-search"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <!-- Loop untuk menampilkan produk -->
+                                    @foreach ($sellers as $index => $seller)
+                                    <tr>
+                                        <!-- Kolom-kolom Produk -->
+                                        <td scope="row">{{ $index + 1 }}</td>
+                                        <td>
+                                            {{ $seller->name }}
+                                        </td>
+                                        <td>{{ $seller->npm }}</td>
+                                        <td>{{ $seller->numberPhone }}</td>
+                                        {{-- <td>{{ $seller->name }}</td> --}}
+                                    </tr>
                                     @endforeach
                                 </table>
-                                <a href="{{ route('Category.Add') }}" class="btn btn-primary">INPUT</a>
+                                
+                                <!-- Tombol untuk menambah produk -->
                             </div>
+
                         </div>
                     </div>
                 </div>

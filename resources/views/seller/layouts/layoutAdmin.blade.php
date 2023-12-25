@@ -16,8 +16,10 @@
     <link rel="stylesheet" href="{{ asset('style/font/font.css') }}">
     @if (Auth::user()->role == 'Seller')
         <link rel="stylesheet" href="{{ asset('style/index.css') }}">
-    @else
+    @elseif (Auth::user()->role == 'Buyer')
         <link rel="stylesheet" href="{{ asset('style/index2.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('style/index3.css') }}">
     @endif
     <link rel="stylesheet" href="{{ asset('style/card.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">

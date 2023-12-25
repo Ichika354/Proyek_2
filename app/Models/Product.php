@@ -22,6 +22,11 @@ class Product extends Model
         'detail'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
+    }
+
     // Di dalam model Product
     public function category()
     {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,6 +29,11 @@ class HomeController extends Controller
 
         $categoryCount = $user->categories_count;
         $productCount = $user->products_count;
-        return view('seller.dashboard',compact('categoryCount', 'productCount'));
+
+        $sellerCount = User::where('role', 'Seller')->count();
+        $countProducts = Product::count();
+        $buyerCount = User::where('role', 'Buyer')->count();
+
+        return view('seller.dashboard',compact('categoryCount', 'productCount','sellerCount','countProducts','buyerCount'));
     }
 }

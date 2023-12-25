@@ -99,7 +99,7 @@
                                                     <!-- Judul dan Deskripsi Produk -->
                                                     <p class="card__title">{{ $product->produkName }}</p>
                                                     <p class="card__description">
-                                                        Kategori : {{ $product->category->category }}
+                                                        Kategori : {{ $product->category->categoryAdmin->category }}
                                                     </p>
                                                     <a href="{{ route('Product.Buyer', $product->id_produk) }}"
                                                         class="btn btn-primary mt-3">

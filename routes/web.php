@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\CategoryAdminController;
 use App\Http\Controllers\CategoryBuyerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileBuyer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,18 @@ Route::get('/category',[CategoryController::class,'views'])->name('Category.Sell
 Route::get('/categoryBuyer',[CategoryBuyerController::class,'views'])->name('Category.Buyer');
 Route::get('/addCategory',[CategoryController::class,'viewsAdd'])->name('Category.Add');
 Route::post('/storeCategory',[CategoryController::class,'store'])->name('Category.Store');
+
+Route::get('/sellerAdmin',[DashboardController::class, 'sellerView'])->name('Seller.Admin');
+
+Route::get('/profileAdmin',[DashboardController::class,'viewsAdmin'])->name('Profile.Admin');
+Route::get('/productAdmin',[DashboardController::class,'viewsProductAdmin'])->name('Product.Admin');
+Route::get('/categoryAdmin',[CategoryAdminController::class,'views'])->name('Category.Admin');
+Route::get('/storeCategory',[CategoryAdminController::class,'viewStore'])->name('Category.Store.Admin');
+Route::post('/storeCategoryPost',[CategoryAdminController::class,'store'])->name('Category.Store.Admin.Post');
+Route::get('/updateCategory/{id}',[CategoryAdminController::class,'viewUpdate'])->name('Category.Update.Admin');
+Route::put('/updateCategoryPut/{id}',[CategoryAdminController::class,'update'])->name('Category.Store.Admin.Put');
+
+
 
 Route::get('/order/{id}',[OrderController::class,'views'])->name('Order.Views');
 Route::post('/checkout',[OrderController::class,'checkout'])->name('Checkout');

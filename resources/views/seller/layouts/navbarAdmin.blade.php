@@ -15,7 +15,7 @@
 
                 <div class="dropdown-menu mt-2 pt-0" aria-labelledby="navbarDropdown">
                     <div class="d-flex p-3 border-bottom mb-2">
-                        
+
                         <div class="d-block">
                             <p class="fw-bold m-0 lh-1">
                                 {{ Auth::user()->name }}
@@ -30,8 +30,15 @@
                         <a class="dropdown-item" href="#">
                             <i class="fa fa-cog fa-lg me-3" aria-hidden="true"></i>Setting
                         </a>
+                    @elseif (Auth::user()->role == 'Buyer')
+                        <a class="dropdown-item" href="{{ route('Profile.Buyer') }}">
+                            <i class="fa fa-user fa-lg me-3" aria-hidden="true"></i>Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa-solid fa-cart-shopping me-3"></i>Cart
+                        </a>
                     @else
-                        <a class="dropdown-item" href="">
+                        <a class="dropdown-item" href="{{ route('Profile.Admin') }}">
                             <i class="fa fa-user fa-lg me-3" aria-hidden="true"></i>Profile
                         </a>
                         <a class="dropdown-item" href="#">
@@ -74,7 +81,10 @@
                 <a class="nav-link px-3" href="{{ route('Category.Seller') }}">
                     <i class="fa fa-list fa-lg box-icon" aria-hidden="true"></i>Kategori
                 </a>
-            @else
+                <a class="nav-link px-3" href="{{ route('Product.Seller') }}">
+                    <i class="fa fa-box fa-lg box-icon" aria-hidden="true"></i>Produk
+                </a>
+            @elseif (Auth::user()->role == 'Buyer')
                 <a class="nav-link px-3" href="{{ route('Profile.Buyer') }}">
                     <i class="fa fa-user fa-lg box-icon" aria-hidden="true"></i>Profile
                 </a>
@@ -82,10 +92,22 @@
                 <a class="nav-link px-3" href="{{ route('Category.Buyer') }}">
                     <i class="fa fa-list fa-lg box-icon" aria-hidden="true"></i>Kategori
                 </a>
+                <a class="nav-link px-3" href="{{ route('Product.Seller') }}">
+                    <i class="fa fa-box fa-lg box-icon" aria-hidden="true"></i>Produk
+                </a>
+            @else
+                <a class="nav-link px-3" href="{{ route('Seller.Admin') }}">
+                    <i class="fa fa-users fa-lg box-icon" aria-hidden="true"></i>Penjual
+                </a>
+                <hr class="soft my-1 bg-white">
+                <a class="nav-link px-3" href="{{ route('Category.Admin') }}">
+                    <i class="fa fa-list fa-lg box-icon" aria-hidden="true"></i>Kategori
+                </a>
+                <a class="nav-link px-3" href="{{ route('Product.Admin') }}">
+                    <i class="fa fa-box fa-lg box-icon" aria-hidden="true"></i>Produk
+                </a>
             @endif
-            <a class="nav-link px-3" href="{{ route('Product.Seller') }}">
-                <i class="fa fa-box fa-lg box-icon" aria-hidden="true"></i>Produk
-            </a>
+
             <hr class="soft my-1 bg-white">
             <a class="nav-link px-3" href="{{ route('logout') }}"onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">

@@ -35,7 +35,7 @@
                                             <i class="{{ $category->icon }} bowl"></i>
                                             <div class="card__content">
                                                 <p class="card__title">{{ $category->category }}</p>
-                                                <a href=""
+                                                <a href="{{ route('Product.By.Category', $category->id_category_admin) }}"
                                                     class="btn btn-primary mt-3">Detail Produk</a>
                                             </div>
                                         </div>

@@ -43,6 +43,7 @@ Route::get('/addCategory',[CategoryController::class,'viewsAdd'])->name('Categor
 Route::post('/storeCategory',[CategoryController::class,'store'])->name('Category.Store');
 
 Route::get('/sellerAdmin',[DashboardController::class, 'sellerView'])->name('Seller.Admin');
+Route::get('/productByCategory/{id_category_admin}',[DashboardController::class, 'productByCategory'])->name('Product.By.Category');
 
 Route::get('/profileAdmin',[DashboardController::class,'viewsAdmin'])->name('Profile.Admin');
 Route::get('/productAdmin',[DashboardController::class,'viewsProductAdmin'])->name('Product.Admin');
@@ -66,9 +67,7 @@ Route::get('/addProduct',[ProductController::class,'viewsAdd'])->name('Product.A
 Route::get('/productImage/{id}', [ProductController::class, 'getProductImage'])->name('Product.Image');
 Route::post('/storeProduct',[ProductController::class,'store'])->name('Product.Store');
 
-
-Route::get('/categoryProduct/{$categoryName}',[CategoryController::class,'productsByCategory'])->name('Product.By.Category');
-
+Route::get('/Address', [AddressController::class, 'Adress'])->name('Address');
 Route::post('/getkabupaten',[AddressController::class,'getkabupaten'])->name('getkabupaten');
 Route::post('/getkecamatan',[AddressController::class,'getkecamatan'])->name('getkecamatan');
 Route::post('/getdesa',[AddressController::class,'getdesa'])->name('getdesa');
@@ -85,7 +84,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/categoryEdit/{id}',[CategoryController::class,'updateViews'])->name('Category.Edit.Views');
     Route::put('/categoryUpdate/{id}', [CategoryController::class, 'update'])->name('Category.Update');
     
-    Route::get('/Address', [AddressController::class, 'Adress'])->name('Address');
     Route::post('/addAddress', [AddressController::class, 'addAdress'])->name('Add.Address');
     Route::delete('/deleteAddress/{id}', [AddressController::class, 'deleteAdress'])->name('Delete.Address');
 

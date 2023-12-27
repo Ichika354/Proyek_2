@@ -18,7 +18,7 @@ class ProductController extends Controller
             $seller = Auth::user();
             $products = $seller->products()->with('category')->get();
         } else {
-            $products = Product::take(10)->get(); // Ambil 10 produk pertama (sesuaikan dengan kebutuhan)
+            $products = Product::take(10)->get();
         }
 
         return view('seller.product', compact('products'));

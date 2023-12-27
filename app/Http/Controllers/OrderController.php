@@ -33,21 +33,18 @@ class OrderController extends Controller
             return redirect()->back()->with('error', 'Jumlah produk yang diminta melebihi stok yang tersedia.');
         }
 
-        // Menambahkan total_price dan status ke dalam request
         $request->merge([
             'total_price' => $total_price,
             'status' => 'Unpaid',
         ]);
 
         $dataOrder = [
-            'id_user' => Auth::user()->id, // Mendapatkan ID pengguna yang login
+            'id_user' => Auth::user()->id, 
             'qty' => $request->jumlah,
             'total_price' => $request->total_price,
             'id_address' => $request->id_address,
         ];
 
-        // dd($dataOrder);
-        // Membuat dan menyimpan order ke dalam database
         $order = Order::create($dataOrder);
 
         $newStok = $stok - $jumlah;

@@ -110,8 +110,6 @@ class AddressController extends Controller
     {
         $address = Address::findOrFail($id);
 
-        // Pastikan pengguna yang sedang login memiliki akses
-        // atau produk dimiliki oleh pengguna yang sedang login
         if ($address->id_user == auth()->user()->id) {
             $address->delete();
             return redirect()->route('Profile.Buyer')->with('success', 'Address deleted successfully.');

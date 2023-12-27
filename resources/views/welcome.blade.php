@@ -35,11 +35,11 @@
 
                 <div class="col-md-6 col-lg-3 mb-5 ">
                     <div class="book">
-                        <a href="">
-                            <img src="Images/Produk/kentang.jpeg" alt="Kentang" class="foto">
+                        <a href="{{ route('login') }}" class="btn btn-primary">
+                            Login
                         </a>
                         <div class="cover">
-                            <p>Kentang</p>
+                            <p>Produk</p>
                         </div>
                     </div>
                 </div>

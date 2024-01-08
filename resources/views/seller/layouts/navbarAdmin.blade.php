@@ -27,15 +27,15 @@
                         <a class="dropdown-item" href="{{ route('Profile.Seller') }}">
                             <i class="fa fa-user fa-lg me-3" aria-hidden="true"></i>Profile
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fa fa-cog fa-lg me-3" aria-hidden="true"></i>Setting
+                        <a class="dropdown-item" href="{{ route('Detail.Order.Seller') }}">
+                            <i class="fa fa-cog fa-lg me-3" aria-hidden="true"></i>Detail Order
                         </a>
                     @elseif (Auth::user()->role == 'Buyer')
                         <a class="dropdown-item" href="{{ route('Profile.Buyer') }}">
                             <i class="fa fa-user fa-lg me-3" aria-hidden="true"></i>Profile
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fa-solid fa-cart-shopping me-3"></i>Cart
+                        <a class="dropdown-item" href="{{ route('Detail.Order') }}">
+                            <i class="fa-solid fa-circle-info me-3"></i>Detail Pesanan
                         </a>
                     @else
                         <a class="dropdown-item" href="{{ route('Profile.Admin') }}">

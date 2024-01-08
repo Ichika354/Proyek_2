@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         if (Auth::user()->role == 'Seller') {
             $seller = Auth::user();
-            $products = $seller->products()->with('category')->get();
+            $products = $seller->products()->with(['category.categoryAdmin'])->get();
         } else {
             $products = Product::take(10)->get();
         }
@@ -104,7 +104,7 @@ class ProductController extends Controller
 
         Product::create($productData);
 
-           return redirect()->route('Product.Seller')->with('success', 'Product added successfully.');
+        return redirect()->route('Product.Seller')->with('success', 'Product added successfully.');
     }
 
     public function update(Request $request, $id)

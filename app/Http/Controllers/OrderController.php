@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,15 +17,16 @@ class OrderController extends Controller
         $addresses = $buyer->address;
 
 
-        return view('buyer.orderBuyer', compact('products','addresses'));
+        return view('buyer.orderBuyer', compact('products', 'addresses'));
     }
 
     public function checkout(Request $request)
     {
         $jumlah = $request->input('jumlah');
-        $harga = $request->input('harga') * (10 / 100) + $request->input('harga');
+        $harga = $request->input('harga') * (20 / 100) + $request->input('harga');
         $id_produk = $request->input('id_produk');
         $id_address = $request->input('id_address');
+        $id_seller = $request->input('id_seller');
         $total_price = $jumlah * $harga;
 
         $stok = $request->input('stok');
@@ -35,14 +37,16 @@ class OrderController extends Controller
 
         $request->merge([
             'total_price' => $total_price,
-            'status' => 'Unpaid',
+            // 'status' => 'Unpaid',
         ]);
 
         $dataOrder = [
-            'id_user' => Auth::user()->id, 
+            'id_user' => Auth::user()->id,
             'qty' => $request->jumlah,
             'total_price' => $request->total_price,
             'id_address' => $request->id_address,
+            'id_seller' => $request->id_seller,
+            'id_product' => $request->id_produk,
         ];
 
         $order = Order::create($dataOrder);
@@ -51,40 +55,32 @@ class OrderController extends Controller
         $product = Product::find($id_produk);
         $product->update(['stock' => $newStok]);
 
-        // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
-
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => $order->id,
-                'gross_amount' => $order->total_price,
-            ),
-            'customer_details' => array(
-                'name'       => $request->name,
-                'phone'      => $request->phone,
-            ),
-        );
-
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
         $products = Product::findOrFail($id_produk);
-        return view('buyer.checkoutBuyer', compact('snapToken', 'order', 'products'));
+        // dd($order);
+        return view('buyer.checkoutBuyer', compact('order', 'products'));
     }
 
-    public function callback(Request $request)
+
+    public function transaction(Request $request)
     {
-        $server_key = config('midtrans.server_key');
-        $hashed = hash('sha521', $request->order_id . $request->status_code . $request->gross_amount . $server_key);
-        if ($hashed == $request->signature_key) {
-            if ($request->transaction_status == 'capture') {
-                $order = Order::find($request->order_id);
-                $order->update(['status' => 'Paid']);
-            }
-        }
+        $request->validate([
+            'transaction_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $image = $request->file('transaction_proof');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('img/bukti'), $imageName);
+
+        $transaction = [
+            'id_order' => $request->id_order,
+            'id_seller' => $request->id_seller,
+            'id_buyer' => $request->id_user,
+            'transaction_proof' => $imageName
+        ];
+
+        Transaction::create($transaction);
+        
+
+        return redirect()->route('Product.Seller')->with('success', 'Produk Berhasil Dibeli!!.');
     }
 }

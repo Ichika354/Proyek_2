@@ -7,7 +7,7 @@
                 <div class="col-12 col-lg-6 w-100">
                     <div class="d-block rounded shadow bg-white p-3">
                         <div class="cust-table">
-                            <div class="d-flex justify-content-between flex-wrap gap-5 title-table w-100 mb-5">
+                            <div class="d-flex justify-content-between flex-wrap gap-5   w-100 mb-5">
                                 <h1>CHECKOUT PRODUK</h1>
                             </div>
                             <!-- Tampilan untuk non-Seller -->
@@ -27,6 +27,7 @@
                                                     <input type="hidden" name="stok" value="{{ $products->stock }}">
                                                     <input type="hidden" name="id_produk"
                                                         value="{{ $products->id_produk }}">
+                                                    <input type="hidden" name="id_seller" value="{{ $products->id_user }}">
                                                     <tr>
                                                         <td class="p-2">
                                                             <p class="card-text">Harga</p>
@@ -35,9 +36,8 @@
                                                             :
                                                         </td>
                                                         <td>
-                                                            <input type="text" name="" id=""
-                                                                class="form-control ms-2"
-                                                                value="Rp. {{ number_format($products->price * (10 / 100) + $products->price, 0, ',', '.') }}"
+                                                            <input type="text" class="form-control ms-2"
+                                                                value="Rp. {{ number_format($products->price * (20 / 100) + $products->price, 0, ',', '.') }}"
                                                                 disabled>
                                                         </td>
                                                     </tr>
@@ -49,7 +49,8 @@
                                                             :
                                                         </td>
                                                         <td class="p-2">
-                                                            <input type="text" name="jumlah" class="form-control" required>
+                                                            <input type="text" name="jumlah" class="form-control"
+                                                                required>
                                                         </td>
                                                     </tr>
                                                     <tr>

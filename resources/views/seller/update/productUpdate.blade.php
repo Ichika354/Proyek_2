@@ -38,9 +38,9 @@
                                                     name="id_category" id="kategori">
                                                     <option selected disabled>Choose a category</option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id_category }}"
-                                                            {{ $product->id_category == $category->id_category ? 'selected' : '' }}>
-                                                            {{ $category->category }}
+                                                        <option value="{{ $category->categoryAdmin->id_category_admin }}"
+                                                            {{ $product->category->categoryAdmin->id_category_admin == $category->categoryAdmin->id_category_admin ? 'selected' : '' }}>
+                                                            {{ $category->categoryAdmin->category }}
                                                         </option>
                                                     @endforeach
                                                 </select>

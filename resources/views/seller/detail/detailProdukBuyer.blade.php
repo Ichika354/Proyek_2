@@ -29,7 +29,7 @@
                                                     </td>
                                                     <td>
                                                         <p class="card-text">
-                                                           Rp. {{ number_format($products->price*(10/100)+$products->price, 0, ',', '.') }}
+                                                           Rp. {{ number_format($products->price*(20/100)+$products->price, 0, ',', '.') }}
                                                         </p>
                                                     </td>
                                                 </tr>

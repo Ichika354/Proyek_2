@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryAdminController;
 use App\Http\Controllers\CategoryBuyerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailOrderBuyerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileBuyer;
@@ -33,9 +34,11 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-// seller
+
 Route::get('/profileSeller',[DashboardController::class,'viewsProfile'])->name('Profile.Seller');
 Route::get('/profileBuyer',[ProfileBuyer::class,'viewsProfile'])->name('Profile.Buyer');
+
+Route::get('/detailOrder',[DetailOrderBuyerController::class,'detail'])->name('Detail.Order');
 
 Route::get('/category',[CategoryController::class,'views'])->name('Category.Seller');
 Route::get('/categoryBuyer',[CategoryBuyerController::class,'views'])->name('Category.Buyer');
@@ -57,6 +60,7 @@ Route::put('/updateCategoryPut/{id}',[CategoryAdminController::class,'update'])-
 
 Route::get('/order/{id}',[OrderController::class,'views'])->name('Order.Views');
 Route::post('/checkout',[OrderController::class,'checkout'])->name('Checkout');
+Route::post('/transaction',[OrderController::class,'transaction'])->name('Transaction');
 Route::post('/midtrans-callback', [OrderController::class, 'callback'])->name('Callback');
 
 
@@ -72,6 +76,9 @@ Route::post('/getkabupaten',[AddressController::class,'getkabupaten'])->name('ge
 Route::post('/getkecamatan',[AddressController::class,'getkecamatan'])->name('getkecamatan');
 Route::post('/getdesa',[AddressController::class,'getdesa'])->name('getdesa');
 
+Route::get('/detailOrderSeller',[DetailOrderBuyerController::class,'viewDetail'])->name('Detail.Order.Seller');
+Route::get('/detailOrderSellerStatus/{id}',[DetailOrderBuyerController::class,'viewDetailStatus'])->name('Detail.Order.Seller.Status');
+Route::put('/UpdateOrderSellerStatus/{id}',[DetailOrderBuyerController::class,'updateStatus'])->name('Update.Order.Seller.Status');
 
 
 // routes/web.php

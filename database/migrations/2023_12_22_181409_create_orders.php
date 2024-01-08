@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id('id_order');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_address');
+            $table->unsignedBigInteger('id_seller');
+            $table->unsignedBigInteger('id_product');
             $table->integer('qty');
             $table->bigInteger('total_price');
-            $table->enum('status', ['Unpaid', 'Paid']);
             $table->timestamps();
             
             $table->foreign('id_user')->references('id_user')->on('addresses');

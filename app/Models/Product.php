@@ -32,4 +32,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'id_category', 'id_category');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }

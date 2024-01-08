@@ -48,7 +48,7 @@
                                                         alt="Product Image" width="50" height="40">
                                                 </td>
                                                 <td>{{ $product->produkName }}</td>
-                                                <td>{{ $product->category->category }}</td>
+                                                <td>{{ $product->category->categoryAdmin->category }}</td>
                                                 <td>{{ number_format($product->price, 0, ',', '.') }}</td>
                                                 <td>{{ $product->stock }}</td>
                                                 <td class="d-flex justify-content-center align-items-center">

@@ -57,10 +57,11 @@
                 <div class="row g-2 mb-3">
                     <div class="col-12">
                         <div class="d-block bg-white rounded shadow p-3">
-                            <h2>Hello</h2>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas ratione, quidem hic quam
-                                blanditiis fugiat vitae officiis quis! Asperiores adipisci maxime minima quibusdam labore
-                                sed? Molestiae harum natus obcaecati dignissimos.</p>
+                            <h2>Hello {{ Auth::user()->name }}</h2>
+                            <p>Selamat datang di Rumah Kewirausahaan, tempat di mana semangat berinovasi bertemu dengan visi
+                                menciptakan perubahan positif. Kami mengucapkan selamat datang kepada Anda, pejuang
+                                kreativitas dan pengusaha yang berani mengejar mimpi. Di sini, setiap langkah yang diambil
+                                adalah langkah menuju pertumbuhan dan keberhasilan.</p>
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{{ asset('style/index.css') }}">
     @elseif (Auth::user()->role == 'Buyer')
         <link rel="stylesheet" href="{{ asset('style/index2.css') }}">
+        <link rel="stylesheet" href="{{ asset('style/file.css') }}">
     @else
         <link rel="stylesheet" href="{{ asset('style/index3.css') }}">
     @endif
@@ -27,7 +28,6 @@
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('node_modules/sweetalert2/dist/sweetalert2.min.css') }}">
 </head>
 
 <style>
@@ -72,9 +72,10 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
     <script src="{{ asset('js/script.js') }}"></script>
+    <script src="{{ asset('js/index.js') }}"></script>
+
+
     <script>
         $(function() {
             $.ajaxSetup({

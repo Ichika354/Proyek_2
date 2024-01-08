@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_order';
+
     protected $guarded = [];
 
     public function address()
@@ -18,8 +20,18 @@ class Order extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'id_product');
     }
 
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class, 'id_order');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_seller');
+    }
     
 }

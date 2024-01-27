@@ -65,7 +65,7 @@
                                             </div>
                                             <input type="file" id="file" name="transaction_proof" required>
                                         </label>
-                                        <h4 class="title-card">Kirim ke Rekening berikut : xxxxxxxx</h4>
+                                        <h4 class="title-card">Kirim ke Rekening berikut : 5780803969 (HANDAYANI)</h4>
                                     </div>
                                 </div>
                                 <button class="btn btn-primary">Kirim</button>

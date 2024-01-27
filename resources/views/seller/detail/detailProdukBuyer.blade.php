@@ -16,7 +16,7 @@
                             <div class="row g-5 mb-3 d-flex">
                                 <div class="col-4">
                                     <div class="card mb-3">
-                                        <img src="{{ asset('img/produk/' . $products->photo) }}" class="card-img-top" alt="...">
+                                        <video src="{{ asset('img/produk/' . $products->vidio) }}" controls autoplay></video>
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $products->produkName }}</h5>
                                             <table>

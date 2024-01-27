@@ -13,6 +13,10 @@ class Order extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'datetime_order' => 'datetime:d-m-Y H:i:s',
+    ];
+
     public function address()
     {
         return $this->belongsTo(Address::class, 'id_user');
@@ -33,5 +37,4 @@ class Order extends Model
     {
         return $this->belongsTo(User::class, 'id_seller');
     }
-    
 }

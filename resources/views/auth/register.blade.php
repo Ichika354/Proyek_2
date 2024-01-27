@@ -5,10 +5,9 @@
         <form class="form mt-5" action="{{ route('register') }}" method="POST">
             @csrf
             <span class="signup">Sign Up</span>
-            
 
-            <input type="text" placeholder="Fullname" class="form--input" name="name" value="{{ old('name') }}"
-                required>
+
+            <input type="text" placeholder="Fullname" class="form--input" name="name" value="{{ old('name') }}" required>
             <input type="text" placeholder="NPM" class="form--input" name="npm" value="{{ old('npm') }}" required>
             <input type="number" placeholder="Number Phone" class="form--input" name="numberPhone"
                 value="{{ old('numberPhone') }}" required>
@@ -31,5 +30,25 @@
             </div>
         </form>
     </div>
-    
 @endsection
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@error('npm')
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'NPM Harus merupakan NPM ULBI',
+        })
+    </script>
+@enderror
+@error('password')
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: '{{ $message }}',
+        })
+    </script>
+@enderror

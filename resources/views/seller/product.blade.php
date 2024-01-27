@@ -49,7 +49,7 @@
                                                 </td>
                                                 <td>{{ $product->produkName }}</td>
                                                 <td>{{ $product->category->categoryAdmin->category }}</td>
-                                                <td>{{ number_format($product->price, 0, ',', '.') }}</td>
+                                                <td>Rp. {{ number_format($product->price, 2, ',', '.') }}</td>
                                                 <td>{{ $product->stock }}</td>
                                                 <td class="d-flex justify-content-center align-items-center">
                                                     <!-- Tombol Edit -->

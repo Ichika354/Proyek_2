@@ -65,6 +65,17 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td class="pe-4 pb-4"><label for="vidio">Vidio</label></td>
+                                            <td class="pe-3 pb-4">:</td>
+                                            <td class="pb-4 d-flex gap-3">
+                                                <input type="file" name="vidio" id="vidio" class="form-control"
+                                                    accept="video/*">
+                                                {{-- <img src="{{ asset('img/produk/' . $product->photo) }}" width="50"
+                                                    alt="" height="30" class="mt-2"> --}}
+                                                    <video src="{{ asset('img/produk/' . $product->vidio) }} }}" width="50" height="30"></video>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td class="pe-4 pb-4"><label for="stok">Ketersediaan Stok</label></td>
                                             <td class="pe-3 pb-4">:</td>
                                             <td class="pb-4"><input type="number" name="stock" id="stok"

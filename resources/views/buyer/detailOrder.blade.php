@@ -65,12 +65,17 @@
                                                     <p>Jumlah</p>
                                                     <p>Total</p>
                                                     <p>Penjual</p>
+                                                    <p>Tanggal Pemesanan</p>
                                                 </div>
                                                 <div class="value">
                                                     <p>{{ $detail->id_order }}</p>
                                                     <p>{{ $detail->qty }}</p>
                                                     <p>Rp.{{ number_format($detail->total_price, 2, ',', '.') }}</p>
                                                     <p>{{ $detail->product->user->name }}</p>
+                                                    <p>
+                                                        {{date('d-m-Y H:i:s', strtotime($detail->created_at))  }}
+                                                        {{-- {{ $detail->created_at }} --}}
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

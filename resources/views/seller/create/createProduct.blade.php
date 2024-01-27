@@ -56,6 +56,14 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td class="pe-4 pb-4"><label for="vidio">Vidio Produk</label></td>
+                                            <td class="pe-3 pb-4">:</td>
+                                            <td class="pb-4">
+                                                <input type="file" name="vidio" id="vidio" class="form-control"
+                                                    >
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td class="pe-4 pb-4"><label for="stok">Ketersediaan Stok</label></td>
                                             <td class="pe-3 pb-4">:</td>
                                             <td class="pb-4"><input type="number" name="stock" id="stok"

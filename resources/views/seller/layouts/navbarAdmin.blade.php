@@ -41,8 +41,8 @@
                         <a class="dropdown-item" href="{{ route('Profile.Admin') }}">
                             <i class="fa fa-user fa-lg me-3" aria-hidden="true"></i>Profile
                         </a>
-                        <a class="dropdown-item" href="#">
-                            <i class="fa-solid fa-cart-shopping me-3"></i>Cart
+                        <a class="dropdown-item" href="{{ route('View.Detail') }}">
+                            <i class="fa-solid fa-cart-shopping me-3"></i>Detail Transaction
                         </a>
                     @endif
                     <hr class="dropdown-divider">

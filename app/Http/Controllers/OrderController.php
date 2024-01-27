@@ -47,6 +47,7 @@ class OrderController extends Controller
             'id_address' => $request->id_address,
             'id_seller' => $request->id_seller,
             'id_product' => $request->id_produk,
+            'datetime_order' => now()->setTimezone('Asia/Jakarta'),
         ];
 
         $order = Order::create($dataOrder);

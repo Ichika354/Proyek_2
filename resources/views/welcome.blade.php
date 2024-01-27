@@ -2,16 +2,16 @@
 @section('title', 'Home Page')
 @section('content')
     <!-- Masthead-->
-    <header class="masthead bg-primary text-white text-center">
+    <header class="masthead text-white bg-primary text-center">
         <div class="container d-flex align-items-center flex-column">
             <!-- Masthead Avatar Image-->
-            <img class="masthead-avatar mb-5 rounded-circle" src="img/foto.jpeg" alt="..." />
+            <img class="masthead-avatar mb-5 rounded-circle" src="img/fotoproyek.jpg" alt="..." />
             <!-- Masthead Heading-->
             <p class="masthead-heading text-uppercase mb-0">Selamat datang Pejuang Wirausaha</p>
             <!-- Icon Divider-->
-            <div class="divider-custom divider-light">
+            <div class="divider-custom divider-dark">
                 <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-icon text-dark"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
             <!-- Masthead Subheading-->
@@ -19,7 +19,7 @@
         </div>
     </header>
     <!-- Portfolio Section-->
-    <section class="page-section portfolio" id="portfolio">
+    <section class="page-section portfolio">
         <div class="container">
             <!-- Portfolio Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Produk</h2>
@@ -47,14 +47,14 @@
         </div>
     </section>
     <!-- About Section-->
-    <section class="page-section bg-primary text-white mb-0" id="about">
+    <section class="page-section bg-primary text-light  mb-0">
         <div class="container">
             <!-- About Section Heading-->
-            <h2 class="page-section-heading text-center text-uppercase text-white">Tentang</h2>
+            <h2 class="page-section-heading text-center text-uppercase ">Tentang</h2>
             <!-- Icon Divider-->
             <div class="divider-custom divider-light">
                 <div class="divider-custom-line"></div>
-                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-icon text-light"><i class="fas fa-star"></i></div>
                 <div class="divider-custom-line"></div>
             </div>
             <!-- About Section Content-->
@@ -73,7 +73,7 @@
         </div>
     </section>
     <!-- Contact Section-->
-    <section class="page-section" id="contact">
+    <section class="page-section">
         <div class="container">
             <!-- Contact Section Heading-->
             <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Daftar Sekarang <a

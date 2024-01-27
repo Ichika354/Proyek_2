@@ -83,26 +83,7 @@
             @yield('content')
         </main>
     </div>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @error('npm')
-        <script>
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'NPM Harus merupakan NPM ULBI',
-            })
-        </script>
-    @enderror
-    @error('password')
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: '{{ $message }}',
-        })
-    </script>
-    @enderror
+    
 </body>
 
 </html>

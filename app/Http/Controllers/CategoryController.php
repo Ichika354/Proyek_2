@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\CategoryAdmin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -29,23 +30,34 @@ class CategoryController extends Controller
             'category' => 'required|string|max:255',
         ]);
 
-        $categoryData = [
-            'id_user' => Auth::user()->id, // Mendapatkan ID pengguna yang login
-            'id_category_admin' => $request->category,
+        // Pastikan id_category_admin belum ada dalam database
+        // $existingCategory = Category::where('id_category_admin', $request->category)->exists();
 
+        // if ($existingCategory) {
+        //     // Kategori sudah ada, tampilkan pesan kesalahan
+        //     return redirect()->route('Category.Seller')->with('error', 'Category Already Exists');
+        // }
+
+        $categoryData = [
+            'id_user' => Auth::user()->id,
+            'id_category_admin' => $request->category,
         ];
 
         Category::create($categoryData);
 
-        return redirect()->route('Category.Seller')->with('success', 'Category added successfully.');
+        // Tampilkan notifikasi sukses
+        Session::flash('success', 'Category Has Been Added');
+
+        return redirect()->route('Category.Seller');
     }
+
 
     public function updateViews($id)
     {
         $category = Category::findOrFail($id);
         $categories = CategoryAdmin::all();
 
-        return view('seller.update.categoryUpdate', compact('category','categories'));
+        return view('seller.update.categoryUpdate', compact('category', 'categories'));
     }
 
     public function categoryDetail($id)

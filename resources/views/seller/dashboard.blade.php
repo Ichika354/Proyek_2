@@ -103,7 +103,8 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-white">
-                                <small class="text-start fw-bold">Sellers</small>
+                                <a href="{{ route('Seller.Admin') }}" class="text-start fw-bold text-dark" style="text-decoration: none">Sellers</a>
+                                {{-- <small class="text-start fw-bold">Sellers</small> --}}
                             </div>
                         </div>
                     </div>
@@ -117,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="card-footer bg-white">
-                                <small class="text-start fw-bold">Products</small>
+                                <a href="{{ route('Seller.Admin') }}" class="text-start fw-bold text-dark" style="text-decoration: none">Products</a>
                             </div>
                         </div>
                     </div>
@@ -140,3 +141,6 @@
         </div>
     @endif
 @endsection
+
+
+{{-- Dengan adanya proses ini, bla blaaaaa --}}

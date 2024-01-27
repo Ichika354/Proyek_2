@@ -10,6 +10,7 @@ use App\Http\Controllers\DetailOrderBuyerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileBuyer;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -80,6 +81,7 @@ Route::get('/detailOrderSeller',[DetailOrderBuyerController::class,'viewDetail']
 Route::get('/detailOrderSellerStatus/{id}',[DetailOrderBuyerController::class,'viewDetailStatus'])->name('Detail.Order.Seller.Status');
 Route::put('/UpdateOrderSellerStatus/{id}',[DetailOrderBuyerController::class,'updateStatus'])->name('Update.Order.Seller.Status');
 
+Route::get('/detailOrderAdmin', [TransactionController::class,'view'])->name('View.Detail');
 
 // routes/web.php
 Route::middleware(['auth'])->group(function () {

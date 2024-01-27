@@ -18,6 +18,7 @@ class Product extends Model
         'produkName',
         'price',
         'photo',
+        'vidio',
         'stock',
         'detail'
     ];

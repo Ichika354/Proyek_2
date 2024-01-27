@@ -84,6 +84,7 @@ class ProductController extends Controller
             'produkName' => 'required|string|max:255',
             'price' => 'required|numeric',
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // maksimum 2MB
+            'vidio' => 'nullable|mimes:mp4,mkv|max:100000',
             'stock' => 'required|numeric',
             'detail' => 'required|string',
         ]);
@@ -92,12 +93,17 @@ class ProductController extends Controller
         $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->move(public_path('img/produk'), $imageName);
 
+        $vidio = $request->file('vidio');
+        $vidioName = time() . '.' . $vidio->getClientOriginalExtension();
+        $vidio->move(public_path('img/produk'), $vidioName);
+
         $productData = [
             'id_user' => Auth::user()->id,
             'produkName' => $request->produkName,
             'id_category' => $request->id_category,
             'price' => $request->price,
             'photo' => $imageName,
+            'vidio' => $vidioName,
             'stock' => $request->stock,
             'detail' => $request->detail,
         ];
@@ -136,6 +142,21 @@ class ProductController extends Controller
             // Mengupdate data pro$product dengan photo baru
             $product->update([
                 'photo' => $imageName,
+            ]);
+        } elseif ($request->hasFile('vidio')) {
+            // Menghapus vidio lama
+            if ($product->vidio) {
+                Storage::delete('img/produk/' . $product->vidio);
+            }
+
+            // Mengupload photo baru
+            $vidio = $request->file('vidio');
+            $vidioName = time() . '.' . $vidio->getClientOriginalExtension();
+            $vidio->move(public_path('img/produk'), $vidioName);
+
+            // Mengupdate data pro$product dengan photo baru
+            $product->update([
+                'vidio' => $vidioName,
             ]);
         }
 

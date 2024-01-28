@@ -5,9 +5,6 @@
             "runtime": "vercel-php@0.6.0"
         }
     },
-    "builds": [
-        { "src": "public/**/*", "use": "@vercel/php" }
-      ],
     "routes" : [
         {
             "src":"/img/(.*)",
